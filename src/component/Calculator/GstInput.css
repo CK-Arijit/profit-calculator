@@ -1,0 +1,13 @@
+select {
+  height: 3rem;
+  width: 100%;
+  padding: 0 0.4rem 1rem;
+  border-radius: 0;
+  font-size: 1.8rem;
+  border: 0px;
+  border-bottom: 1px solid;
+}
+
+select:focus-visible {
+  outline: none;
+}

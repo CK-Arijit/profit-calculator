@@ -1,0 +1,13 @@
+.flabel {
+  font-size: 2rem;
+  padding-bottom: 0.8rem;
+  color: #767676;
+}
+.section {
+  width: inherit;
+  padding-bottom: 3rem;
+}
+
+.topSec div[name="confirmGst"].flabel {
+  width: calc(100% - 9rem);
+}
