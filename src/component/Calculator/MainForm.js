@@ -7,36 +7,39 @@ import React, { useState } from "react";
 import "../UI/checkbox.css";
 import CoreLogic from "./CoreLogic";
 
-const clickHandler = () => {
-  let excGstCheck = document.getElementById("excGstCheckBox").checked;
-
-  let purchasePrice = document.getElementById("purchasePrice").value;
-  purchasePrice = parseFloat(purchasePrice.replace(/[₹,]/g, ""));
-
-  let sellingPrice = document.getElementById("sellingPrice").value;
-  sellingPrice = parseFloat(sellingPrice.replace(/[₹,]/g, ""));
-
-  let purchaseGst = document.getElementById("purchaseGst").value;
-  purchaseGst = parseFloat(purchaseGst);
-
-  let sellGst = document.getElementById("sellGst").value;
-  sellGst = parseFloat(sellGst);
-
-  const dataMapping = {
-    excGstCheck: excGstCheck,
-    purchasePrice: purchasePrice,
-    sellingPrice: sellingPrice,
-    purchaseGst: purchaseGst,
-    sellGst: sellGst,
-  };
-  CoreLogic(dataMapping);
-};
-
 function MainForm() {
   const [excludingGst, setExcludingGst] = useState(false);
   const [checkboxClass, setCheckboxClass] = useState("toggle");
   const [profit, setProfit] = useState("NA");
   const [profitPercentage, setProfitPercentage] = useState("NA");
+
+  const clickHandler = () => {
+    let excGstCheck = document.getElementById("excGstCheckBox").checked;
+
+    let purchasePrice = document.getElementById("purchasePrice").value;
+    purchasePrice = parseFloat(purchasePrice.replace(/[₹,]/g, ""));
+
+    let sellingPrice = document.getElementById("sellingPrice").value;
+    sellingPrice = parseFloat(sellingPrice.replace(/[₹,]/g, ""));
+
+    let purchaseGst = document.getElementById("purchaseGst").value;
+    purchaseGst = parseFloat(purchaseGst);
+
+    let sellGst = document.getElementById("sellGst").value;
+    sellGst = parseFloat(sellGst);
+
+    const dataMapping = {
+      excGstCheck: excGstCheck,
+      purchasePrice: purchasePrice,
+      sellingPrice: sellingPrice,
+      purchaseGst: purchaseGst,
+      sellGst: sellGst,
+    };
+    const result = CoreLogic(dataMapping);
+    console.log(result);
+    setProfit(Math.round(result.profit, 2));
+    setProfitPercentage(Math.round(result.profitPercent, 2));
+  };
 
   const handleCheckboxChange = (e) => {
     console.log(e.target.checked);

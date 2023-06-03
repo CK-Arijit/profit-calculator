@@ -10,6 +10,42 @@ function CoreLogic(props) {
   let sellingPrice = props.sellingPrice;
   let purchaseGst = props.purchaseGst;
   let sellGst = props.sellGst;
+  let purchasePriceIncludingGst;
+  let purchasePriceExcludingGst;
+  let sellPriceIncludingGst;
+  let sellPriceExcludingGst;
+  let profit;
+
+  if (excGstCheck) {
+    purchasePriceExcludingGst = purchasePrice;
+    purchasePriceIncludingGst =
+      purchasePriceExcludingGst + purchaseGst * purchasePriceExcludingGst;
+  } else {
+    purchasePriceIncludingGst = purchasePrice;
+    purchasePriceExcludingGst = gst[purchaseGst] * purchasePriceIncludingGst;
+  }
+
+  let gstPaid = purchasePriceIncludingGst - purchasePriceExcludingGst;
+
+  sellPriceIncludingGst = sellingPrice;
+  sellPriceExcludingGst = gst[sellGst] * sellPriceIncludingGst;
+
+  let gstCollected = sellPriceIncludingGst - sellPriceExcludingGst;
+
+  let netGstPayable = gstCollected - gstPaid;
+
+  profit = sellPriceIncludingGst - netGstPayable - purchasePriceIncludingGst;
+
+  let profitPercent = (profit / purchasePriceIncludingGst) * 100;
+
+  console.log(profit);
+  console.log(profitPercent);
+
+  const result = {
+    profit: profit,
+    profitPercent: profitPercent,
+  };
+  return result;
 }
 
 export default CoreLogic;
