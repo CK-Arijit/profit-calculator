@@ -4,8 +4,17 @@ function Output(props) {
   // Format the value as currency (e.g. "1,000.00")
   let profit = props.profit;
   let profitPercent = props.profitPercent;
+  let netGstPayable = props.netGstPayable;
   if (profit !== "NA") {
     profit = Number(props.profit).toLocaleString("en-IN", {
+      style: "currency",
+      currency: "INR",
+      minimumFractionDigits: 2,
+    });
+  }
+
+  if (netGstPayable !== "NA") {
+    netGstPayable = Number(props.netGstPayable).toLocaleString("en-IN", {
       style: "currency",
       currency: "INR",
       minimumFractionDigits: 2,
@@ -32,6 +41,14 @@ function Output(props) {
         </div>
         <div className="fvalue" fieldType="text">
           {profitPercent}
+        </div>
+      </Section>
+      <Section className="secC">
+        <div name="netGstPayable" className="flabel">
+          Net GST Payable
+        </div>
+        <div className="fvalue" fieldType="text">
+          {netGstPayable}
         </div>
       </Section>
     </OutputContainer>

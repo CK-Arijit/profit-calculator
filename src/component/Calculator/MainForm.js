@@ -12,6 +12,7 @@ function MainForm() {
   const [checkboxClass, setCheckboxClass] = useState("toggle");
   const [profit, setProfit] = useState("NA");
   const [profitPercentage, setProfitPercentage] = useState("NA");
+  const [netGstPayable, setNetGstPayable] = useState("NA");
 
   const clickHandler = () => {
     let excGstCheck = document.getElementById("excGstCheckBox").checked;
@@ -39,6 +40,7 @@ function MainForm() {
     console.log(result);
     setProfit(Math.round(result.profit, 2));
     setProfitPercentage(Math.round(result.profitPercent, 2));
+    setNetGstPayable(Math.round(result.netGstPayable, 2));
   };
 
   const handleCheckboxChange = (e) => {
@@ -117,7 +119,11 @@ function MainForm() {
           Calculate
         </button>
       </Card>
-      <Output profit={profit} profitPercent={profitPercentage}></Output>
+      <Output
+        profit={profit}
+        profitPercent={profitPercentage}
+        netGstPayable={netGstPayable}
+      ></Output>
     </Card>
   );
 }

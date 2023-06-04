@@ -44,6 +44,7 @@ function CoreLogic(props) {
   const result = {
     profit: profit,
     profitPercent: profitPercent,
+    netGstPayable: netGstPayable,
   };
   return result;
 }
