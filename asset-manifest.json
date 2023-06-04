@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/profit-calculator/static/css/main.25be94ba.css",
+    "main.js": "/profit-calculator/static/js/main.5172e59c.js",
+    "index.html": "/profit-calculator/index.html",
+    "main.25be94ba.css.map": "/profit-calculator/static/css/main.25be94ba.css.map",
+    "main.5172e59c.js.map": "/profit-calculator/static/js/main.5172e59c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.25be94ba.css",
+    "static/js/main.5172e59c.js"
+  ]
+}
